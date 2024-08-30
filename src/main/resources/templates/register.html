@@ -1,0 +1,19 @@
+<html lang="en">
+  <head>
+    {{>_head}}
+    <title>Family Share - Finish Registration</title>
+    <script defer src="/js/login.js"></script>
+  </head>
+  <body>
+    <h1>Hi, {{user.name}}</h1>
+    <p>
+      <em>Let's finish your signup by adding a security device.</em>
+    </p>
+    <button
+      onclick="registerDevice(this.dataset.user)"
+      data-user="{{user.name}}"
+    >
+      Finish Registration
+    </button>
+  </body>
+</html>
