@@ -23,19 +23,19 @@ async function startAuth() {
     throw new Error(`Authentication failure: ${await initResponse.text()}`);
   }
   const credentialsRequest = await initResponse.json();
-  const { challenge, allowCredentials, ...props } = credentialsRequest.publicKey;
+  const { challenge, allowCredentials, ...props } =
+    credentialsRequest.publicKey;
   try {
     const credentials = await navigator.credentials.get({
       publicKey: {
         ...props,
         challenge: await b64urlToBytes(challenge),
-        allowCredentials: allowCredentials?.map(c => ({
-            ...c,
-            id: b64urlToBytes(c.id),
+        allowCredentials: allowCredentials?.map((c) => ({
+          ...c,
+          id: b64urlToBytes(c.id),
         })),
       },
     });
-    console.debug(credentials);
     const { authenticatorData, signature, clientDataJSON, userHandle } =
       credentials.response;
     const resultJson = {

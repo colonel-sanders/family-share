@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class SecuredContentController {
-    @GetMapping("/secure")
-    public String index() {
-        return "secure";
-    }
+  @GetMapping("/secure")
+  public String index() {
+    return "secure";
+  }
 }
