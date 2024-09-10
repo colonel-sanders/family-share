@@ -55,7 +55,7 @@ async function startAuth() {
       body: JSON.stringify(resultJson),
     });
     if (finishResponse.ok) {
-      window.location.assign("/secure");
+      window.location.assign("/secure/");
     } else {
       console.error(finishResponse);
     }
@@ -107,7 +107,6 @@ async function registerDevice(username) {
         attestationObject: await bytesToB64Url(attestationObject),
       },
     };
-    console.debug(JSON.stringify(resultJson));
     const finishResponse = await fetch("/register/finish", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

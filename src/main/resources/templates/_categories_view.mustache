@@ -1,0 +1,16 @@
+{{#categories}}
+    <details>
+        <summary class="category-header">{{name}}</summary>
+        <div
+                hx-get="/secure/categories/{{id}}/documents"
+                hx-trigger="revealed once"
+        >
+            Loading...
+        </div>
+    </details>
+{{/categories}}
+<details id="add-category">
+    <summary>
+        <button hx-get="/secure/categories/new" hx-swap="outerHTML">New Category</button>
+    </summary>
+</details>

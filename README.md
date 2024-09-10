@@ -1,6 +1,6 @@
 # family-share
 
-_A demo shared secrets app to explore the Web Authentication API (Webauthn) for password-free authentication_
+_A demo shared vault app to explore the Web Authentication API (Webauthn) for password-free authentication_
 
 ## Prerequisites
 
@@ -21,3 +21,7 @@ _A demo shared secrets app to explore the Web Authentication API (Webauthn) for 
 4. The embedded database is created with sample users. Register a new Webauthn device for this sample account by visiting `https://localhost:8080/register?name=Mom`
 5. Complete device registration. You can use a physical device, a virtual authenticator such as Apple Touch ID, or an [emulated device](https://developer.chrome.com/docs/devtools/webauthn).
 6. Once device registration completes, you'll be redirected to the home page. Login with your device to access the secured content.
+
+## Operation Notes
+
+- The app is currently logging a Hibernate error on startup due to [HHH-17612](https://hibernate.atlassian.net/browse/HHH-17612). The app still functions properly.

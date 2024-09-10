@@ -5,6 +5,7 @@ import com.github.colonelsanders.familyshare.entities.FamilyMember;
 import com.github.colonelsanders.familyshare.entities.FamilyMemberRepository;
 import com.github.colonelsanders.familyshare.entities.WebauthnAuthenticator;
 import com.github.colonelsanders.familyshare.entities.WebauthnAuthenticatorRepository;
+import com.github.colonelsanders.familyshare.security.AuthFilter;
 import com.yubico.webauthn.*;
 import com.yubico.webauthn.data.ByteArray;
 import com.yubico.webauthn.data.PublicKeyCredential;
@@ -14,8 +15,7 @@ import com.yubico.webauthn.exception.AssertionFailedException;
 import com.yubico.webauthn.exception.RegistrationFailedException;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,14 +26,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 /** Endpoints for Webauthn registration and login. */
 @Controller
+@Slf4j
 public class AuthController {
   @Autowired private RelyingParty relyingParty;
   @Autowired private FamilyMemberRepository userRepo;
   @Autowired private WebauthnAuthenticatorRepository authenticatorRepo;
 
-  private final Log log = LogFactory.getLog(AuthController.class);
-
-  public static final String USER_SESSION_KEY = "user";
   public static final String ASSERTION_SESSION_KEY = "assertion";
   public static final String REGISTRATION_SESSION_KEY = "registration";
 
@@ -71,7 +69,7 @@ public class AuthController {
       var result = relyingParty.finishAssertion(assertionOpts);
       if (result.isSuccess()) {
         session.removeAttribute(ASSERTION_SESSION_KEY);
-        session.setAttribute(USER_SESSION_KEY, result.getUsername());
+        AuthFilter.setAuthenticatedUsername(result.getUsername(), session);
         return new OperationComplete("success", result.getUsername());
       }
     } catch (AssertionFailedException | IOException e) {

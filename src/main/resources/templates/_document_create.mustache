@@ -1,0 +1,15 @@
+<div class="flex">
+  <form hx-post="/secure/categories/{{category.id}}/documents" hx-target="#add-document-{{category.id}}" hx-swap="outerHTML">
+    <label for="document_name_{{category.id}}">Name</label>
+    <input
+      id="document_name_{{category.id}}"
+      name="name"
+      type="text"
+      minlength="1"
+      placeholder="document name"
+    />
+    <label for="document_content_{{category.id}}">Content</label>
+    <textarea id="document_content_{{category.id}}" name="content" placeholder="# Markdown supported"></textarea>
+    <button type="submit">Create</button>
+  </form>
+</div>

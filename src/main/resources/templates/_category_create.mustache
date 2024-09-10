@@ -1,0 +1,13 @@
+<div class="flex">
+  <form hx-post="/secure/categories" hx-target="#add-category" hx-swap="outerHTML">
+    <label for="category_name">Name</label>
+    <input
+      id="category_name"
+      name="name"
+      type="text"
+      minlength="1"
+      placeholder="category name"
+    />
+    <button type="submit">Create</button>
+  </form>
+</div>
