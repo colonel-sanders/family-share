@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class AuthFilter implements Filter {
-  private static final String USER_SESSION_KEY = "user";
+  public static final String USER_SESSION_KEY = "user";
 
   public static String getAuthenticatedUsername(HttpSession session) {
     return session == null ? null : (String) session.getAttribute(USER_SESSION_KEY);
