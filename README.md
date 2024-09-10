@@ -4,7 +4,7 @@ _A demo shared vault app to explore the Web Authentication API (Webauthn) for pa
 
 ## Prerequisites
 
-- Java 15+
+- Java 17+
 
 ## Tech Stack
 
@@ -12,6 +12,8 @@ _A demo shared vault app to explore the Web Authentication API (Webauthn) for pa
 - [java-webauthn-server](https://github.com/Yubico/java-webauthn-server)
 - Spring WebMVC + Mustache
 - [H2 in-memory database](https://www.h2database.com/)
+- [htmx](https://htmx.org/)
+- [Picnic CSS](https://picnicss.com/)
 
 ## Getting Started
 
