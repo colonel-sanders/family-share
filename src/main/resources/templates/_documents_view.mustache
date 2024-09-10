@@ -1,0 +1,13 @@
+{{#documents}}
+    <article class="card">
+        <header>
+            <h3>{{name}}</h3>
+        </header>
+        <div><pre>{{#renderMarkdown}}{{content}}{{/renderMarkdown}}</pre></div>
+    </article>
+{{/documents}}
+<article class="card" id="add-document-{{category.id}}">
+    <header>
+        <button hx-get="/secure/categories/{{category.id}}/documents/new" hx-swap="outerHTML">New Document</button>
+    </header>
+</article>

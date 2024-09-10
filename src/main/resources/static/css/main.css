@@ -1,0 +1,30 @@
+@import "./3p/picnic-7.1.0.css";
+
+body {
+  padding: 1em;
+}
+
+#error-toast {
+  display: none;
+  padding: 0.5em;
+  font-weight: bold;
+  background: goldenrod;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+details {
+  padding: 0.5em;
+  margin: 0.2em;
+  border: 2px solid gray;
+}
+
+.category-header {
+  padding: 0.5em;
+}
+
+.category-header::after {
+  content: "\21D5";
+  margin-left: 0.5em;
+}
